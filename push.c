@@ -9,11 +9,12 @@
 void monty_push(stack_t **head, unsigned int line_value)
 {
 	stack_t *top;
-	int stack[STACK_SIZE];
+	(void)line_value;
 
-	if (top >= STACK_SIZE - 1)
+	top = malloc(sizeof(stack_t));
+	if (top == NULL)
 	{
-		fprintf(stderr, "Error:Stack malloc overflow\n");
+		fprintf(stderr, "Error: Stack failed\n", line_value);
 		exit(EXIT_FAILURE);
 	}
 	top++;
@@ -31,8 +32,16 @@ void monty_push(stack_t **head, unsigned int line_value)
  */
 void monty_pall(stack_t **head, unsigned int line_value)
 {
-	for (int m = top; m >= 0; m--)
+	stack_t *h = (*head);
+
+	if (h == NULL)
 	{
-		printf("%d\n", top[m]);
+		return;
 	}
+	while (h)
+	{
+		printf("%d\n", h->n);
+		h = h->next;
+	}
+	(void)line_value;
 }
