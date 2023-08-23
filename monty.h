@@ -38,4 +38,7 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+int main(int argc, char *argv[]);
+void monty_push(stack_t **head, unsigned int line_value);
+void monty_pall(stack_t **head, unsigned int line_value);
 #endif
