@@ -7,7 +7,7 @@
  */
 void monty_pop(stack_t **stack, unsigned int line_number)
 {
-	stack_t *top = NULL;
+	stack_t *top;
 
 	if ((*stack)->next == NULL)
 {
