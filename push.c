@@ -14,7 +14,7 @@ void monty_push(stack_t **stack, unsigned int line_number)
 	top = malloc(sizeof(stack_t));
 	if (top == NULL)
 	{
-		fprintf(stderr, "Error: Stack failed\n", line_number);
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	top++;

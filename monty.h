@@ -43,7 +43,9 @@ typedef struct bus_s
 	FILE *file;
 	char *input;
 }  bus_t;
+
 int main(int argc, char *argv[]);
+void monty_push(stack_t **stack, unsigned int line_number);
 void monty_push(stack_t **stack, unsigned int line_number);
 void monty_pall(stack_t **stack, unsigned int line_number);
 #endif
