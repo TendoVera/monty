@@ -37,8 +37,13 @@ typedef struct instruction_s
         char *opcode;
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
-
+typedef struct bus_s
+{
+	char *arg;
+	FILE *file;
+	char *input;
+}  bus_t;
 int main(int argc, char *argv[]);
-void monty_push(stack_t **head, unsigned int line_value);
-void monty_pall(stack_t **head, unsigned int line_value);
+void monty_push(stack_t **stack, unsigned int line_number);
+void monty_pall(stack_t **stack, unsigned int line_number);
 #endif

@@ -1,24 +1,24 @@
 #include "monty.h"
 /**
  * monty_pop - prints the value at the top of the stack, followed by new line
- * @head: head stack
- * @line_value: line number.
+ * @stack: stack
+ * @line_number: line number.
  * Return: nothing.
  */
-void monty_pop(stack_t **head, unsigned int line_value)
+void monty_pop(stack_t **stack, unsigned int line_number)
 {
-	stack_t *new = NULL;
+	stack_t *top = NULL;
 
-	if ((*head)->next == NULL)
+	if ((*stack)->next == NULL)
 {
 	    fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-next = (*head)->next->next;
-free((*head)->next);
+next = (*stack)->next->next;
+free((*stack)->next);
     if (next)
-        next->prev = *head;
-    (*head)->next = next;
+        next->prev = *stack;
+    (*stack)->next = next;
 }
 
