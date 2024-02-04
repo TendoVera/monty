@@ -1,4 +1,7 @@
+#define _GNU_SOURCE
+#include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include "monty.h"
 
 bus_t bus = {NULL, NULL, NULL};
@@ -17,6 +20,7 @@ int main(int argc, char *argv[])
     char *input;
     size_t size = 0;
     FILE *file;
+    char *trimmed_input;
 
     if (argc != 2)
     {
@@ -33,20 +37,19 @@ int main(int argc, char *argv[])
 
     bus.file = file;
 
-    while (read_line > 0)
+    while ((read_line = getline(&input, &size, file)) != -1)
     {
-        input = NULL;
-        read_line = getline(&input, &size, file);
         bus.input = input;
         line_number++;
 
-        if (read_line > 0)
+	trimmed_input = strtok(input, " \t\n");
+        if (trimmed_input != NULL && trimmed_input[0] != '#') 
         {
-            execute(input, &top, line_number, file);
+            execute(trimmed_input, &top, line_number, file);
         }
-        free(input);
-    }
 
+    }
+     free(input);
     fclose(file);
     return (0);
 }
